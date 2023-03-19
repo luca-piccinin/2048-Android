@@ -15,3 +15,4 @@ you can find me on social media: <a href="https://www.instagram.com/sharepointer
 
 <b>Demo</b><br>
 ![Demo gameplay](https://github.com/GamEditor/2048-Android/blob/master/2048-Android.gif?raw=true)
+    
