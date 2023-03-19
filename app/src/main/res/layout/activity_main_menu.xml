@@ -14,12 +14,12 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_toLeftOf="@+id/btn_start_5x5"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_toStartOf="@+id/btn_start_5x5"
+        android:layout_toLeftOf="@+id/btn_start_5x5"
         android:layout_weight="1"
         android:background="@drawable/cell_rectangle_2048"
         android:onClick="onButtonsClick"
@@ -27,12 +27,13 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/text_white"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_start_5x5"
         app:layout_constraintEnd_toStartOf="@+id/btn_start_5x5"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_start_5x5" />
+        app:layout_constraintTop_toTopOf="@+id/btn_start_5x5"
+        tools:ignore="TextContrastCheck" />
 
 
     <Button
@@ -41,12 +42,14 @@
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toStartOf="@+id/btn_start_6x6"
+        android:layout_toLeftOf="@+id/btn_start_6x6"
         android:layout_weight="1"
         android:background="@drawable/cell_rectangle_2048"
         android:onClick="onButtonsClick"
@@ -54,23 +57,26 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/text_white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start_6x6"
+        app:layout_constraintEnd_toStartOf="@+id/btn_start_6x6"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/btn_start_6x6"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/btn_start_6x6"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_toEndOf="@+id/btn_start_5x5"
-        android:layout_toRightOf="@+id/btn_start_5x5"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:background="@drawable/cell_rectangle_2048"
         android:onClick="onButtonsClick"
@@ -78,12 +84,98 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/text_white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_start_5x5"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_start_5x5"
-        app:layout_constraintTop_toTopOf="@+id/btn_start_5x5" />
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btn_start_8x8"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toStartOf="@+id/btn_start_11x11"
+        android:layout_toLeftOf="@+id/btn_start_11x11"
+        android:layout_weight="1"
+        android:background="@drawable/cell_rectangle_2048"
+        android:onClick="onButtonsClick"
+        android:text="@string/size_8x8"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start_11x11"
+        app:layout_constraintEnd_toStartOf="@+id/btn_start_11x11"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_start_11x11"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btn_start_11x11"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toStartOf="@+id/btn_start_15x15"
+        android:layout_toLeftOf="@+id/btn_start_15x15"
+        android:layout_weight="1"
+        android:background="@drawable/cell_rectangle_2048"
+        android:onClick="onButtonsClick"
+        android:text="@string/size_11x11"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start_15x15"
+        app:layout_constraintEnd_toStartOf="@+id/btn_start_15x15"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_start_15x15"
+        tools:ignore="TextContrastCheck,TextSizeCheck" />
+
+    <Button
+        android:id="@+id/btn_start_15x15"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/cell_rectangle_2048"
+        android:onClick="onButtonsClick"
+        android:text="@string/size_15x15"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck,TextContrastCheck" />
 
     <LinearLayout
         android:id="@+id/other_buttons"
@@ -100,7 +192,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start_5x5">
+        app:layout_constraintTop_toBottomOf="@+id/btn_start_5x5"
+        app:layout_constraintVertical_bias="0.75">
 
         <ImageView
             android:id="@+id/btn_show_achievements"
@@ -109,7 +202,8 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="onButtonsClick"
-            app:srcCompat="@drawable/ic_achievement" />
+            app:srcCompat="@drawable/ic_achievement"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/btn_show_leaderboards"
@@ -118,7 +212,8 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="onButtonsClick"
-            app:srcCompat="@drawable/ic_leaderboard" />
+            app:srcCompat="@drawable/ic_leaderboard"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/btn_settings"
@@ -127,7 +222,8 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="onButtonsClick"
-            app:srcCompat="@drawable/ic_settings" />
+            app:srcCompat="@drawable/ic_settings"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/btn_send_email"
@@ -136,7 +232,8 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="onButtonsClick"
-            app:srcCompat="@drawable/ic_email" />
+            app:srcCompat="@drawable/ic_email"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/btn_social_instagram"
@@ -145,7 +242,8 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="onButtonsClick"
-            app:srcCompat="@drawable/ic_instagram" />
+            app:srcCompat="@drawable/ic_instagram"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/btn_more_games"
@@ -154,7 +252,8 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="onButtonsClick"
-            app:srcCompat="@drawable/ic_moregames" />
+            app:srcCompat="@drawable/ic_moregames"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/btn_rate"
@@ -163,7 +262,8 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="onButtonsClick"
-            app:srcCompat="@drawable/ic_rate" />
+            app:srcCompat="@drawable/ic_rate"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/btn_share"
@@ -172,7 +272,8 @@
             android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="onButtonsClick"
-            app:srcCompat="@drawable/ic_share" />
+            app:srcCompat="@drawable/ic_share"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </LinearLayout>
 

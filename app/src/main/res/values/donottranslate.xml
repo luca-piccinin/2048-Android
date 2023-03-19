@@ -33,4 +33,8 @@
     <string name="size_4x4" translatable="false">4x4</string>
     <string name="size_5x5" translatable="false">5x5</string>
     <string name="size_6x6" translatable="false">6x6</string>
+    <string name="size_8x8" translatable="false">8x8</string>
+    <string name="size_11x11" translatable="false">11x11</string>
+    <string name="size_15x15" translatable="false">15x15</string>
+
 </resources>

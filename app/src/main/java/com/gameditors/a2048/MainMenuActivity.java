@@ -79,10 +79,16 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
         Button bt4x4 = findViewById(R.id.btn_start_4x4);
         Button bt5x5 = findViewById(R.id.btn_start_5x5);
         Button bt6x6 = findViewById(R.id.btn_start_6x6);
+        Button bt8x8 = findViewById(R.id.btn_start_8x8);
+        Button bt11x11 = findViewById(R.id.btn_start_11x11);
+        Button bt15x15 = findViewById(R.id.btn_start_15x15);
 
         bt4x4.setTypeface(ClearSans_Bold);
         bt5x5.setTypeface(ClearSans_Bold);
         bt6x6.setTypeface(ClearSans_Bold);
+        bt8x8.setTypeface(ClearSans_Bold);
+        bt11x11.setTypeface(ClearSans_Bold);
+        bt15x15.setTypeface(ClearSans_Bold);
 
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -171,6 +177,15 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 break;
             case R.id.btn_start_6x6:
                 StartGame(6);
+                break;
+            case R.id.btn_start_8x8:
+                StartGame(8);
+                break;
+            case R.id.btn_start_11x11:
+                StartGame(11);
+                break;
+            case R.id.btn_start_15x15:
+                StartGame(15);
                 break;
             case R.id.btn_show_achievements:
                 if(!isSignedIn())
