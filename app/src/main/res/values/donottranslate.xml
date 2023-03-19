@@ -6,7 +6,7 @@
     <string name="url_google_play" translatable="false">https://play.google.com/store/apps/details?id=com.gameditors.a2048</string>
 
     <string name="instagram_package_name" ranslatable="false" translatable="false">com.instagram.android</string>
-    <string name="instagram_page_uri" ranslatable="false" translatable="false">https://www.instagram.com/gameditors/</string>
+    <string name="instagram_page_uri" ranslatable="false" translatable="false">https://www.instagram.com/luca.piccinin/</string>
 
     <!-- For Google Play Services -->
     <string name="achievements_exception" translatable="false">There was an issue communicating with achievements.</string>

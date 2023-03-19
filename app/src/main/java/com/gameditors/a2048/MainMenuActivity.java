@@ -41,9 +41,6 @@ import com.google.android.gms.tasks.Task;
 
 import org.json.JSONObject;
 
-import ir.adad.ad.AdadAdListener;
-import ir.adad.banner.AdadBannerAd;
-import ir.adad.core.Adad;
 
 
 public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener
@@ -90,7 +87,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
-        if(activeNetwork != null && activeNetwork.isConnectedOrConnecting())
+        /*if(activeNetwork != null && activeNetwork.isConnectedOrConnecting())
         {
             Adad.initialize("0fb16c39-0c78-408f-985e-917f3a3d6972");
 
@@ -111,7 +108,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 @Override
                 public void onClosed() { }
             });
-        }
+        }*/
 
         // Create the client used to sign in to Google services.
         mGoogleSignInClient = GoogleSignIn.getClient(this,
