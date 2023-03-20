@@ -2,7 +2,6 @@ package com.gameditors.a2048;
 
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,17 +9,15 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,11 +36,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-import org.json.JSONObject;
 
-
-
-public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener
+public class MainMenuActivityMadness extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener
 {
     public static boolean mIsMainMenu = true;
 
@@ -79,18 +73,10 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
         Button bt4x4 = findViewById(R.id.btn_start_4x4);
         Button bt5x5 = findViewById(R.id.btn_start_5x5);
         Button bt6x6 = findViewById(R.id.btn_start_6x6);
-        Button bt8x8 = findViewById(R.id.btn_start_8x8);
-        Button bt11x11 = findViewById(R.id.btn_start_11x11);
-        Button bt15x15 = findViewById(R.id.btn_start_15x15);
-        Button btMadness = findViewById(R.id.btn_madness);
 
         bt4x4.setTypeface(ClearSans_Bold);
         bt5x5.setTypeface(ClearSans_Bold);
         bt6x6.setTypeface(ClearSans_Bold);
-        bt8x8.setTypeface(ClearSans_Bold);
-        bt11x11.setTypeface(ClearSans_Bold);
-        bt15x15.setTypeface(ClearSans_Bold);
-        btMadness.setTypeface(ClearSans_Bold);
 
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -133,7 +119,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
         {
             case R.id.settings_color_picker:
                 mRows = 4;  // because of its GameView!
-                startActivity(new Intent(MainMenuActivity.this, ColorPickerActivity.class));
+                startActivity(new Intent(MainMenuActivityMadness.this, ColorPickerActivity.class));
                 break;
             case R.id.settings_sign_out:
                 signOut();
@@ -179,18 +165,6 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 break;
             case R.id.btn_start_6x6:
                 StartGame(6);
-                break;
-            case R.id.btn_start_8x8:
-                StartGame(8);
-                break;
-            case R.id.btn_start_11x11:
-                StartGame(11);
-                break;
-            case R.id.btn_start_15x15:
-                StartGame(15);
-                break;
-            case R.id.btn_madness:
-                startActivity(new Intent(MainMenuActivity.this, MainActivity.class));
                 break;
             case R.id.btn_show_achievements:
                 if(!isSignedIn())
@@ -302,7 +276,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(MainMenuActivity.this, getString(R.string.email_client_error), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainMenuActivityMadness.this, getString(R.string.email_client_error), Toast.LENGTH_SHORT).show();
                 }
         }
     }
@@ -346,7 +320,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
     {
         mRows = rows;
         mIsMainMenu = false;
-        startActivity(new Intent(MainMenuActivity.this, MainActivity.class));
+        startActivity(new Intent(MainMenuActivityMadness.this, MainActivity.class));
     }
 
     public void signInSilently()

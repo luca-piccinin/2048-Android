@@ -9,7 +9,6 @@
     android:orientation="vertical"
     tools:context="com.gameditors.a2048.MainMenuActivity">
 
-
     <Button
         android:id="@+id/btn_start_4x4"
         android:layout_width="70dp"
@@ -34,8 +33,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_start_5x5"
-        app:layout_constraintVertical_bias="1.0"
         tools:ignore="TextContrastCheck" />
+
 
     <Button
         android:id="@+id/btn_start_5x5"
@@ -64,7 +63,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_start_6x6"
-        app:layout_constraintVertical_bias="0.49"
         tools:ignore="TextContrastCheck" />
 
     <Button
@@ -94,6 +92,119 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.36"
         tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btn_start_8x8"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toStartOf="@+id/btn_start_11x11"
+        android:layout_toLeftOf="@+id/btn_start_11x11"
+        android:layout_weight="1"
+        android:background="@drawable/cell_rectangle_2048"
+        android:onClick="onButtonsClick"
+        android:text="@string/size_8x8"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start_11x11"
+        app:layout_constraintEnd_toStartOf="@+id/btn_start_11x11"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_start_11x11"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btn_start_11x11"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toStartOf="@+id/btn_start_15x15"
+        android:layout_toLeftOf="@+id/btn_start_15x15"
+        android:layout_weight="1"
+        android:background="@drawable/cell_rectangle_2048"
+        android:onClick="onButtonsClick"
+        android:text="@string/size_11x11"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start_15x15"
+        app:layout_constraintEnd_toStartOf="@+id/btn_start_15x15"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_start_15x15"
+        tools:ignore="TextContrastCheck,TextSizeCheck" />
+
+    <Button
+        android:id="@+id/btn_start_15x15"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/cell_rectangle_2048"
+        android:onClick="onButtonsClick"
+        android:text="@string/size_15x15"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48"
+        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btn_madness"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/cell_rectangle_2048"
+        android:onClick="onButtonsClick"
+        android:text="@string/madness"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603"
+        tools:ignore="TextSizeCheck,TextContrastCheck" />
 
     <LinearLayout
         android:id="@+id/other_buttons"
