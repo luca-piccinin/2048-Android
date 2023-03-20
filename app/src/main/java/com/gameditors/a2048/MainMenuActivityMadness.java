@@ -70,13 +70,13 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
 
         Typeface ClearSans_Bold = Typeface.createFromAsset(getResources().getAssets(), "ClearSans-Bold.ttf");
 
-        Button bt4x4 = findViewById(R.id.btn_start_4x4);
-        Button bt5x5 = findViewById(R.id.btn_start_5x5);
-        Button bt6x6 = findViewById(R.id.btn_start_6x6);
+        Button bt25x25 = findViewById(R.id.btn_start_25x25);
+        Button bt50x50 = findViewById(R.id.btn_start_50x50);
+        Button bt100x100 = findViewById(R.id.btn_start_100x100);
 
-        bt4x4.setTypeface(ClearSans_Bold);
-        bt5x5.setTypeface(ClearSans_Bold);
-        bt6x6.setTypeface(ClearSans_Bold);
+        bt25x25.setTypeface(ClearSans_Bold);
+        bt50x50.setTypeface(ClearSans_Bold);
+        bt100x100.setTypeface(ClearSans_Bold);
 
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -157,14 +157,14 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
                 }
                 break;
                 */
-            case R.id.btn_start_4x4:
-                StartGame(4);
+            case R.id.btn_start_25x25:
+                StartGame(25);
                 break;
-            case R.id.btn_start_5x5:
-                StartGame(5);
+            case R.id.btn_start_50x50:
+                StartGame(50);
                 break;
-            case R.id.btn_start_6x6:
-                StartGame(6);
+            case R.id.btn_start_100x100:
+                StartGame(100);
                 break;
             case R.id.btn_show_achievements:
                 if(!isSignedIn())

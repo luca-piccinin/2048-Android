@@ -36,6 +36,9 @@
     <string name="size_8x8" translatable="false">8x8</string>
     <string name="size_11x11" translatable="false">11x11</string>
     <string name="size_15x15" translatable="false">15x15</string>
+    <string name="size_25x25" translatable="false">25x25</string>
+    <string name="size_50x50" translatable="false">50x50</string>
+    <string name="size_100x100" translatable="false">100x100</string>
     <string name="madness" translatable="false">madness</string>
 
 </resources>
