@@ -64,7 +64,7 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_main_menu_madness);
 
         mIsMainMenu = true;
 

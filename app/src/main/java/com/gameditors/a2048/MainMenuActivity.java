@@ -190,7 +190,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 StartGame(15);
                 break;
             case R.id.btn_madness:
-                startActivity(new Intent(MainMenuActivity.this, MainActivity.class));
+                startActivity(new Intent(MainMenuActivity.this, MainMenuActivityMadness.class));
                 break;
             case R.id.btn_show_achievements:
                 if(!isSignedIn())
