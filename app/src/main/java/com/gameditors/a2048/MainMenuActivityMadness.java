@@ -158,13 +158,13 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
                 break;
                 */
             case R.id.btn_start_25x25:
-                StartGame(25);
+                this.StartGame(25);
                 break;
             case R.id.btn_start_50x50:
-                StartGame(50);
+                this.StartGame(50);
                 break;
             case R.id.btn_start_100x100:
-                StartGame(100);
+                this.StartGame(100);
                 break;
             case R.id.btn_show_achievements:
                 if(!isSignedIn())

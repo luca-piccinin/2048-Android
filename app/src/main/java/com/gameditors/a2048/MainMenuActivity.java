@@ -172,22 +172,22 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 break;
                 */
             case R.id.btn_start_4x4:
-                StartGame(4);
+                this.StartGame(4);
                 break;
             case R.id.btn_start_5x5:
-                StartGame(5);
+                this.StartGame(5);
                 break;
             case R.id.btn_start_6x6:
-                StartGame(6);
+                this.StartGame(6);
                 break;
             case R.id.btn_start_8x8:
-                StartGame(8);
+                this.StartGame(8);
                 break;
             case R.id.btn_start_11x11:
-                StartGame(11);
+                this.StartGame(11);
                 break;
             case R.id.btn_start_15x15:
-                StartGame(15);
+                this.StartGame(15);
                 break;
             case R.id.btn_madness:
                 Intent activity = new Intent(getApplicationContext(), MainMenuActivityMadness.class);
