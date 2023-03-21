@@ -7,7 +7,9 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context="com.gameditors.a2048.MainMenuActivity">
+    tools:context="com.gameditors.a2048.MainMenuActivity"
+    app:menu="@menu/menus">
+
 
     <Button
         android:id="@+id/btn_start_4x4"
@@ -90,7 +92,7 @@
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36"
+        app:layout_constraintVertical_bias="0.317"
         tools:ignore="TextContrastCheck" />
 
     <Button
@@ -175,7 +177,7 @@
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48"
+        app:layout_constraintVertical_bias="0.457"
         tools:ignore="TextSizeCheck,TextContrastCheck" />
 
     <Button
