@@ -226,7 +226,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
             case R.id.btn_share:
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.get_from_bazaar) + "\n\n" + getString(R.string.url_cafe_bazaar));
+                shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.get_from_bazaar) + "\n\n" + getString(R.string.url_google_play));
 
                 startActivity(Intent.createChooser(shareIntent, getString(R.string.share_title)));
                 break;
@@ -240,7 +240,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 }
                 catch (Exception e)
                 {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url_cafe_bazzar_developer))));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url_google_play))));
                 }
                 break;
             case R.id.btn_rate:
@@ -254,7 +254,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 }
                 catch (Exception e) // for activity not found exception
                 {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url_cafe_bazaar))));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url_google_play))));
                 }
                 break;
             case R.id.btn_social_instagram:
