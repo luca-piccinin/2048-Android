@@ -190,8 +190,8 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 this.StartGame(15);
                 break;
             case R.id.btn_madness:
-                Intent activity = new Intent(getApplicationContext(), MainMenuActivityMadness.class);
-                startActivity(activity);
+                CustomDialog dialog = new CustomDialog(this);
+                dialog.show();
                 break;
             case R.id.btn_show_achievements:
                 if(!isSignedIn())

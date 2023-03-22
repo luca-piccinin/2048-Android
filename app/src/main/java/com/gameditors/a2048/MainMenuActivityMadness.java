@@ -73,10 +73,12 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         Button bt25x25 = findViewById(R.id.btn_start_25x25);
         Button bt50x50 = findViewById(R.id.btn_start_50x50);
         Button bt100x100 = findViewById(R.id.btn_start_100x100);
+        Button btback = findViewById(R.id.btn_back);
 
         bt25x25.setTypeface(ClearSans_Bold);
         bt50x50.setTypeface(ClearSans_Bold);
         bt100x100.setTypeface(ClearSans_Bold);
+        btback.setTypeface(ClearSans_Bold);
 
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -165,6 +167,10 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
                 break;
             case R.id.btn_start_100x100:
                 this.StartGame(100);
+                break;
+            case R.id.btn_back:
+                Intent main = new Intent(this, MainMenuActivity.class);
+                startActivity(main);
                 break;
             case R.id.btn_show_achievements:
                 if(!isSignedIn())

@@ -40,5 +40,6 @@
     <string name="size_50x50" translatable="false">50x50</string>
     <string name="size_100x100" translatable="false">100x100</string>
     <string name="madness" translatable="false">madness</string>
+    <string name="back" translatable="false">back</string>
 
 </resources>
