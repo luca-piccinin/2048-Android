@@ -29,23 +29,8 @@
     <string name="dont_delete_tiles">No</string>
 
     <!-- Deleting Selection -->
-    <string name="action_deleting_selection">Deleting Selection</string>
-    <string name="title_deleting_selection">Select your required tile</string>
-    <string name="message_unable_deleting_selection">no more chance for this set!</string>
-    <string name="message_inactivated_game_and_deleting_selection_is_available">Press \"Undo\", then do this action again!</string>
-    <string name="title_remain_deleting_selections_amount">Remaining selections: </string>
-    <string name="question_deleting_selections">Are you sure?</string>
 
     <!-- Menu Items -->
-    <string name="achievements">Achievements</string>
-    <string name="leaderboards">Leaderboards</string>
-    <string name="settings">Settings</string>
-    <string name="contact_us">Contact us</string>
-    <string name="instagram">Instagram</string>
-    <string name="other_games">Other games</string>
-    <string name="background_color">Background color</string>
-    <string name="rate_us">Rate 2048</string>
-    <string name="share_2048">Share with friends</string>
     <string name="sign_out">Sign out</string>
     <string name="try_again">Try again a few seconds later!</string>
 

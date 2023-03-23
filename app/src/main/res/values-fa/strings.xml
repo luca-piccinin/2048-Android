@@ -29,23 +29,8 @@
     <string name="dont_delete_tiles">نه</string>
 
     <!-- Deleting Selection -->
-    <string name="action_deleting_selection">حذف انتخابی</string>
-    <string name="title_deleting_selection">خونه ی مورد نظر رو انتخاب کن</string>
-    <string name="message_unable_deleting_selection">حذف های انتخابی برای این دست تموم شدن!</string>
-    <string name="message_inactivated_game_and_deleting_selection_is_available">دکمه Undo رو بزن و دوباره تلاش کن</string>
-    <string name="title_remain_deleting_selections_amount">انتخاب های باقی مانده: </string>
-    <string name="question_deleting_selections">مطمئن هستی؟</string>
 
     <!-- Menu Items -->
-    <string name="achievements">افتخارات</string>
-    <string name="leaderboards">نفرات برتر</string>
-    <string name="settings">تنظیمات</string>
-    <string name="contact_us">ارتباط با ما</string>
-    <string name="instagram">اینستاگرام</string>
-    <string name="other_games">سایر بازی ها</string>
-    <string name="background_color">رنگ پس زمینه</string>
-    <string name="rate_us">امتیاز دادن به 2048</string>
-    <string name="share_2048">به اشتراک گذاشتن با دوستان</string>
     <string name="sign_out">خروج از حساب گوگل</string>
     <string name="try_again">چند ثانیه بعد دوباره تلاش کن!</string>
 
