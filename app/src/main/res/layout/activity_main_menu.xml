@@ -9,17 +9,18 @@
     android:orientation="vertical"
     tools:context="com.gameditors.a2048.MainMenuActivity">
 
+
     <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="650dp">
     </com.google.android.gms.ads.AdView>
-
 
     <Button
         android:id="@+id/btn_start_4x4"
