@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 28
+    compileSdk 31
     defaultConfig {
         applicationId "com.gameditors.a2048"
         minSdk 28
