@@ -10,16 +10,20 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -89,28 +93,14 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
-        /*if(activeNetwork != null && activeNetwork.isConnectedOrConnecting())
+        if(activeNetwork != null && activeNetwork.isConnectedOrConnecting())
         {
-            Adad.initialize("0fb16c39-0c78-408f-985e-917f3a3d6972");
-
-            ((AdadBannerAd)findViewById(R.id.banner_ad_view)).setAdListener(new AdadAdListener()
-            {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
-                public void onLoaded() { }
-
-                @Override
-                public void onShowed() { }
-
-                @Override
-                public void onActionOccurred(int code) { }
-
-                @Override
-                public void onError(int code, String message) { }
-
-                @Override
-                public void onClosed() { }
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
             });
-        }*/
+        }
 
         // Create the client used to sign in to Google services.
         mGoogleSignInClient = GoogleSignIn.getClient(this,
