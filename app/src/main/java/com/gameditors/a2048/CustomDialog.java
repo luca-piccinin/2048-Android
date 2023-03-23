@@ -1,7 +1,5 @@
 package com.gameditors.a2048;
 
-import static android.support.v4.content.ContextCompat.startActivity;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
