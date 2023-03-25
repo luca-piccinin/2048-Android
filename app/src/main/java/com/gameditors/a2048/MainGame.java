@@ -54,7 +54,12 @@ public class MainGame
 
     public void newGame()
     {
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
+
         if (grid == null)
             grid = new Grid(rows, rows);
         else
@@ -105,7 +110,12 @@ public class MainGame
 
     private void recordHighScore()
     {
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
+
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mContext);
         SharedPreferences.Editor editor = settings.edit();
         editor.putLong(HIGH_SCORE + rows, highScore);
@@ -114,7 +124,12 @@ public class MainGame
 
     private long getHighScore()
     {
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
+
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mContext);
         return settings.getLong(HIGH_SCORE + rows, -1);
     }
@@ -300,7 +315,12 @@ public class MainGame
     {
         List<Integer> traversals = new ArrayList<>();
 
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
+
         for (int xx = 0; xx < rows; xx++)
             traversals.add(xx);
 
@@ -314,7 +334,12 @@ public class MainGame
     {
         List<Integer> traversals = new ArrayList<>();
 
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
+
         for (int xx = 0; xx < rows; xx++)
             traversals.add(xx);
 
@@ -347,7 +372,12 @@ public class MainGame
     {
         Tile tile;
 
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
+
         for (int xx = 0; xx < rows; xx++)
         {
             for (int yy = 0; yy < rows; yy++)
@@ -398,7 +428,11 @@ public class MainGame
 
     private void customSaveLoadTemp()
     {
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
 
         final String WIDTH = "width" + rows + "temp";
         final String HEIGHT = "height" + rows + "temp";
@@ -456,7 +490,12 @@ public class MainGame
 
     public void RemoveTilesWithTrash()
     {
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
+
         int cellCount = (rows * rows) - (rows + 2);
 
         if(mContext.getClass() == ColorPickerActivity.class)    // because of color picker
@@ -501,7 +540,11 @@ public class MainGame
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mContext);
 
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
 
         if(!settings.getBoolean("has_snapshot" + rows, false))
         {
@@ -559,7 +602,11 @@ public class MainGame
             return;
         }
 
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+        if(MainMenuActivity.getRows() != 0)
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
 
         final String CURRENT_STATE = "cs";
 

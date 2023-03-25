@@ -42,7 +42,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
 {
     public static boolean mIsMainMenu = true;
 
-    private static int mRows = 4;
+    private static int mRows = 0;
     public static int getRows() { return mRows; }
 
     private final String BACKGROUND_COLOR_KEY = "BackgroundColor";

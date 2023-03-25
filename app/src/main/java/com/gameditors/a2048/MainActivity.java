@@ -1,7 +1,6 @@
 package com.gameditors.a2048;
 
 import android.annotation.SuppressLint;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -42,8 +41,6 @@ public class MainActivity extends AppCompatActivity
 
     // delete selection:
     public static int mRewardDeletingSelectionAmounts = 3;
-
-    private static ComponentName callingActivity;
 
     private static final String REWARD_DELETES = "reward chances";
     private static final String WIDTH = "width";
@@ -120,8 +117,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
-        callingActivity = getCallingActivity();
 
         FrameLayout frameLayout = findViewById(R.id.game_frame_layout);
         view = new MainView(this, this);
@@ -243,11 +238,10 @@ public class MainActivity extends AppCompatActivity
 
     private void save() {
         final int rows;
-
-        if (callingActivity != null && callingActivity.getClassName().equals("com.gameditors.a2048.MainMenuActivity"))
-            rows = MainMenuActivity.getRows();
+        if(MainMenuActivity.getRows() != 0)
+            rows= MainMenuActivity.getRows();
         else
-            rows = MainMenuActivityMadness.getRows();
+            rows= MainMenuActivityMadness.getRows();
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = settings.edit();
@@ -284,7 +278,7 @@ public class MainActivity extends AppCompatActivity
         editor.apply();
 
         // my reason for writing this operation here: i want take effect after save()
-        if (callingActivity != null && callingActivity.getClassName().equals("com.gameditors.a2048.MainMenuActivity")) {
+        if (MainMenuActivity.getRows() != 0) {
             switch (MainMenuActivity.getRows())
             {
                 case 4:
@@ -356,7 +350,7 @@ public class MainActivity extends AppCompatActivity
     {
         final int rows;
 
-        if (callingActivity != null && callingActivity.getClassName().equals("com.gameditors.a2048.MainMenuActivity"))
+        if (MainMenuActivity.getRows() != 0)
             rows = MainMenuActivity.getRows();
         else
             rows = MainMenuActivityMadness.getRows();

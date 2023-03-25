@@ -360,7 +360,11 @@ public class MainView extends View
     //Renders the set of 16 background squares.
     private void drawBackgroundGrid(Canvas canvas)
     {
-        final int ROWS = MainMenuActivity.getRows();
+        final int ROWS;
+        if(MainMenuActivity.getRows() != 0)
+            ROWS = MainMenuActivity.getRows();
+        else
+            ROWS = MainMenuActivityMadness.getRows();
 
         Drawable backgroundCell = getDrawable(R.drawable.cell_rectangle);
         // Outputting the game grid
@@ -378,7 +382,11 @@ public class MainView extends View
 
     private void drawCells(Canvas canvas)
     {
-        final int ROWS = MainMenuActivity.getRows();
+        final int ROWS;
+        if(MainMenuActivity.getRows() != 0)
+            ROWS = MainMenuActivity.getRows();
+        else
+            ROWS = MainMenuActivityMadness.getRows();
 
         paint.setTextSize(textSize);
         paint.setTextAlign(Paint.Align.CENTER);
@@ -629,7 +637,11 @@ public class MainView extends View
 
     private void getLayout(int width, int height)
     {
-        final int ROWS = MainMenuActivity.getRows();
+        final int ROWS;
+        if(MainMenuActivity.getRows() != 0)
+            ROWS = MainMenuActivity.getRows();
+        else
+            ROWS = MainMenuActivityMadness.getRows();
 
         cellSize = Math.min(width / (ROWS + 1), height / (ROWS + 3));
         gridWidth = cellSize / (ROWS + 3);  // (ROWS + 3) was 7
