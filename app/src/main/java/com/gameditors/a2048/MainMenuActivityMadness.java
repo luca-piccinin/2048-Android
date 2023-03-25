@@ -129,11 +129,10 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         return false;
     }
 
-    // Buttons:
-    @SuppressLint({"NonConstantResourceId", "IntentReset"})
+    @SuppressLint("NonConstantResourceId")
     public void onButtonsClick(View view)
     {
-        switch (MainMenuActivityMadness.getRows())
+        switch (view.getId())
         {
             case R.id.btn_start_25x25:
                 this.StartGame(25);
