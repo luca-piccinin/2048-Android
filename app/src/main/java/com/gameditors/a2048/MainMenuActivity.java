@@ -22,6 +22,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -309,7 +310,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
         if(settings.getInt(BACKGROUND_COLOR_KEY, mBackgroundColor) < 0)
             mBackgroundColor = settings.getInt(BACKGROUND_COLOR_KEY, mBackgroundColor);
         else
-            mBackgroundColor = getResources().getColor(R.color.colorBackground);
+            mBackgroundColor = ContextCompat.getColor(this, R.color.colorBackground);
     }
 
     private void StartGame(int rows)
