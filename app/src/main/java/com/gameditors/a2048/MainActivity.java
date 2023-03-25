@@ -1,6 +1,7 @@
 package com.gameditors.a2048;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity
 
     // delete selection:
     public static int mRewardDeletingSelectionAmounts = 3;
+
+    private static ComponentName callingActivity;
 
     private static final String REWARD_DELETES = "reward chances";
     private static final String WIDTH = "width";
@@ -117,6 +120,8 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        callingActivity = getCallingActivity();
 
         FrameLayout frameLayout = findViewById(R.id.game_frame_layout);
         view = new MainView(this, this);
@@ -236,9 +241,13 @@ public class MainActivity extends AppCompatActivity
         editor.apply();
     }
 
-    private void save()
-    {
-        final int rows = MainMenuActivity.getRows();
+    private void save() {
+        final int rows;
+
+        if (callingActivity != null && callingActivity.getClassName().equals("com.gameditors.a2048.MainMenuActivity"))
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = settings.edit();
@@ -247,10 +256,8 @@ public class MainActivity extends AppCompatActivity
         editor.putInt(WIDTH + rows, field.length);
         editor.putInt(HEIGHT + rows, field.length);
 
-        for (int xx = 0; xx < field.length; xx++)
-        {
-            for (int yy = 0; yy < field[0].length; yy++)
-            {
+        for (int xx = 0; xx < field.length; xx++) {
+            for (int yy = 0; yy < field[0].length; yy++) {
                 if (field[xx][yy] != null)
                     editor.putInt(rows + " " + xx + " " + yy, field[xx][yy].getValue());
                 else
@@ -277,42 +284,83 @@ public class MainActivity extends AppCompatActivity
         editor.apply();
 
         // my reason for writing this operation here: i want take effect after save()
-        switch (MainMenuActivity.getRows())
-        {
-            case 4:
-                mHighScore4x4 = view.game.highScore;
-                break;
-            case 5:
-                mHighScore5x5 = view.game.highScore;
-                break;
-            case 7:
-                mHighScore6x6 = view.game.highScore;
-                break;
-            case 8:
-                mHighScore8x8 = view.game.highScore;
-                break;
-            case 9:
-                mHighScore11x11 = view.game.highScore;
-                break;
-            case 10:
-                mHighScore15x15 = view.game.highScore;
-                break;
-            case 11:
-                mHighScore25x25 = view.game.highScore;
-                break;
-            case 12:
-                mHighScore50x50 = view.game.highScore;
-                break;
-            case 13:
-                mHighScore100x100 = view.game.highScore;
-                break;
+        if (callingActivity != null && callingActivity.getClassName().equals("com.gameditors.a2048.MainMenuActivity")) {
+            switch (MainMenuActivity.getRows())
+            {
+                case 4:
+                    mHighScore4x4 = view.game.highScore;
+                    break;
+                case 5:
+                    mHighScore5x5 = view.game.highScore;
+                    break;
+                case 7:
+                    mHighScore6x6 = view.game.highScore;
+                    break;
+                case 8:
+                    mHighScore8x8 = view.game.highScore;
+                    break;
+                case 9:
+                    mHighScore11x11 = view.game.highScore;
+                    break;
+                case 10:
+                    mHighScore15x15 = view.game.highScore;
+                    break;
+                case 11:
+                    mHighScore25x25 = view.game.highScore;
+                    break;
+                case 12:
+                    mHighScore50x50 = view.game.highScore;
+                    break;
+                case 13:
+                    mHighScore100x100 = view.game.highScore;
+                    break;
 
+            }
+        }
+        else {
+            switch (MainMenuActivityMadness.getRows())
+            {
+                case 4:
+                    mHighScore4x4 = view.game.highScore;
+                    break;
+                case 5:
+                    mHighScore5x5 = view.game.highScore;
+                    break;
+                case 7:
+                    mHighScore6x6 = view.game.highScore;
+                    break;
+                case 8:
+                    mHighScore8x8 = view.game.highScore;
+                    break;
+                case 9:
+                    mHighScore11x11 = view.game.highScore;
+                    break;
+                case 10:
+                    mHighScore15x15 = view.game.highScore;
+                    break;
+                case 11:
+                    mHighScore25x25 = view.game.highScore;
+                    break;
+                case 12:
+                    mHighScore50x50 = view.game.highScore;
+                    break;
+                case 13:
+                    mHighScore100x100 = view.game.highScore;
+                    break;
+
+            }
         }
     }
 
     private void load()
     {
-        final int rows = MainMenuActivity.getRows();
+        final int rows;
+
+        if (callingActivity != null && callingActivity.getClassName().equals("com.gameditors.a2048.MainMenuActivity"))
+            rows = MainMenuActivity.getRows();
+        else
+            rows = MainMenuActivityMadness.getRows();
+
 
         //Stopping all animations
         view.game.aGrid.cancelAnimations();
