@@ -42,6 +42,9 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
 {
     public static boolean mIsMainMenu = true;
 
+    private static int mRows = 4;
+    public static int getRows() { return mRows; }
+
     private final String BACKGROUND_COLOR_KEY = "BackgroundColor";
     public static int mBackgroundColor = 0;
 
@@ -134,13 +137,13 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         switch (view.getId())
         {
             case R.id.btn_start_25x25:
-                this.StartGame();
+                this.StartGame(25);
                 break;
             case R.id.btn_start_50x50:
-                this.StartGame();
+                this.StartGame(50);
                 break;
             case R.id.btn_start_100x100:
-                this.StartGame();
+                this.StartGame(100);
                 break;
             case R.id.btn_back:
                 Intent main = new Intent(this, MainMenuActivity.class);
@@ -294,8 +297,9 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
             mBackgroundColor = ContextCompat.getColor(this, R.color.colorBackground);
     }
 
-    private void StartGame()
+    private void StartGame(int rows)
     {
+        mRows = rows;
         mIsMainMenu = false;
         startActivity(new Intent(MainMenuActivityMadness.this, MainActivity.class));
     }
