@@ -162,7 +162,7 @@ public class MainMenuActivity extends AppCompatActivity implements PopupMenu.OnM
                 this.StartGame(15);
                 break;
             case R.id.btn_madness:
-                CustomDialog dialog = new CustomDialog(this);
+                CustomDialog dialog = new CustomDialog(this, getResources().getString(R.string.message));
                 dialog.show();
                 break;
             case R.id.btn_show_achievements:

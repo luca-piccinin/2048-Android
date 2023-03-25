@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity
     private static long mHighScore4x4;
     private static long mHighScore5x5;
     private static long mHighScore6x6;
+    private static long mHighScore8x8;
+    private static long mHighScore11x11;
+    private static long mHighScore15x15;
+    private static long mHighScore25x25;
+    private static long mHighScore50x50;
+    private static long mHighScore100x100;
 
     private static boolean mAchievement32 = false;
     private static boolean mAchievement64 = false;
@@ -279,9 +285,28 @@ public class MainActivity extends AppCompatActivity
             case 5:
                 mHighScore5x5 = view.game.highScore;
                 break;
-            case 6:
+            case 7:
                 mHighScore6x6 = view.game.highScore;
                 break;
+            case 8:
+                mHighScore8x8 = view.game.highScore;
+                break;
+            case 9:
+                mHighScore11x11 = view.game.highScore;
+                break;
+            case 10:
+                mHighScore15x15 = view.game.highScore;
+                break;
+            case 11:
+                mHighScore25x25 = view.game.highScore;
+                break;
+            case 12:
+                mHighScore50x50 = view.game.highScore;
+                break;
+            case 13:
+                mHighScore100x100 = view.game.highScore;
+                break;
+
         }
     }
 
@@ -458,6 +483,42 @@ public class MainActivity extends AppCompatActivity
                 mLeaderboardsClient.submitScore(getString(R.string.leaderboard_6x6), mHighScore6x6);
                 mHighScore6x6 = -1;
             }
+
+            if (mHighScore8x8 >= 0)
+            {
+                mLeaderboardsClient.submitScore(getString(R.string.leaderboard_8x8), mHighScore8x8);
+                mHighScore8x8 = -1;
+            }
+
+            if (mHighScore11x11 >= 0)
+            {
+                mLeaderboardsClient.submitScore(getString(R.string.leaderboard_11x11), mHighScore11x11);
+                mHighScore11x11 = -1;
+            }
+
+            if (mHighScore15x15 >= 0)
+            {
+                mLeaderboardsClient.submitScore(getString(R.string.leaderboard_15x15), mHighScore15x15);
+                mHighScore15x15 = -1;
+            }
+
+            if (mHighScore25x25 >= 0)
+            {
+                mLeaderboardsClient.submitScore(getString(R.string.leaderboard_25x25), mHighScore25x25);
+                mHighScore25x25 = -1;
+            }
+
+            if (mHighScore50x50 >= 0)
+            {
+                mLeaderboardsClient.submitScore(getString(R.string.leaderboard_50x50), mHighScore50x50);
+                mHighScore50x50 = -1;
+            }
+
+            if (mHighScore100x100 >= 0)
+            {
+                mLeaderboardsClient.submitScore(getString(R.string.leaderboard_100x100), mHighScore100x100);
+                mHighScore100x100 = -1;
+            }
         }
         catch (Exception e)
         {
@@ -555,6 +616,8 @@ public class MainActivity extends AppCompatActivity
     {
         return !mAchievement32 || !mAchievement64 || !mAchievement128 || !mAchievement256
                 || !mAchievement512 || !mAchievement1024 || !mAchievement2048 || !mAchievement4096
-                || !mAchievement8192 || mHighScore4x4 < 0 || mHighScore5x5 < 0 || mHighScore6x6 < 0;
+                || !mAchievement8192 || mHighScore4x4 < 0 || mHighScore5x5 < 0 || mHighScore6x6 < 0
+                || mHighScore8x8 < 0 || mHighScore11x11 < 0 || mHighScore15x15 < 0 || mHighScore25x25 < 0
+                || mHighScore50x50 < 0 || mHighScore100x100 < 0;
     }
 }

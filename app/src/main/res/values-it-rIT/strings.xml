@@ -13,10 +13,13 @@
     <string name="madness" translatable="false">follia</string>
     <string name="back" translatable="false">indietro</string>
 
+    <string name="message" translatable="false">Sei VERAMENTE sicuro di voler continuare?</string>
+    <string name="message_madness" translatable="false">Sei sicuro di voler tornare indietro</string>
+
     <string name="achievements_exception" translatable="false">Si è verificato un problema durante la comunicazione con i traguardi.</string>
     <string name="leaderboards_exception" translatable="false">Si è verificato un problema durante la comunicazione con le classifiche.</string>
     <string name="players_exception" translatable="false">Si è verificato un problema durante la comunicazione con i giocatori.</string>
-    <string name="signin_other_error" translatable="false">Si è verificato un problema con l'accesso. Riprova più tardi.</string>
+    <string name="signin_other_error" translatable="false">Si è verificato un problema con l\'accesso. Riprova più tardi.</string>
 
     <!-- Confirmation dialog-->
     <string name="reset">Resetta</string>

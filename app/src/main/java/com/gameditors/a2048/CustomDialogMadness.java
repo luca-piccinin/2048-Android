@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CustomDialog extends Dialog implements View.OnClickListener {
+public class CustomDialogMadness extends Dialog implements View.OnClickListener {
 
     private final Context context;
     private final String message;
 
-    public CustomDialog(Context context, String message) {
+    public CustomDialogMadness(Context context, String message) {
         super(context);
         this.context = context;
         this.message = message;
@@ -38,7 +38,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.continue_button:
                 dismiss();
-                Intent intent = new Intent(context, MainMenuActivityMadness.class);
+                Intent intent = new Intent(context, MainMenuActivity.class);
                 context.startActivity(intent);
                 break;
             case R.id.back_button:

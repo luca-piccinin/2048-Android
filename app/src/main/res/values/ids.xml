@@ -31,4 +31,16 @@ Save this file as res/values/games-ids.xml in your project.
   <string name="leaderboard_5x5" translatable="false">CgkIrrqv64sDEAIQAg</string>
   <!-- leaderboard 6x6 -->
   <string name="leaderboard_6x6" translatable="false">CgkIrrqv64sDEAIQAw</string>
+  <!-- leaderboard 8x8 -->
+  <string name="leaderboard_8x8" translatable="false">CgkIrrqv64sDEAIQAw</string>
+  <!-- leaderboard 11x11 -->
+  <string name="leaderboard_11x11" translatable="false">CgkIrrqv64sDEAIQAw</string>
+  <!-- leaderboard 15x15 -->
+  <string name="leaderboard_15x15" translatable="false">CgkIrrqv64sDEAIQAw</string>
+  <!-- leaderboard 25x25 -->
+  <string name="leaderboard_25x25" translatable="false">CgkIrrqv64sDEAIQAw</string>
+  <!-- leaderboard 50x50 -->
+  <string name="leaderboard_50x50" translatable="false">CgkIrrqv64sDEAIQAw</string>
+  <!-- leaderboard 100x100 -->
+  <string name="leaderboard_100x100" translatable="false">CgkIrrqv64sDEAIQAw</string>
 </resources>

@@ -13,6 +13,10 @@
     <string name="madness" translatable="false">madness</string>
     <string name="back" translatable="false">back</string>
 
+    <string name="message" translatable="false">Are you REALLY sure you want to continue?</string>
+    <string name="message_madness" translatable="false">Are you sure you want to go back?</string>
+
+
     <string name="achievements_exception" translatable="false">There was an issue communicating with achievements.</string>
     <string name="leaderboards_exception" translatable="false">There was an issue communicating with leaderboards.</string>
     <string name="players_exception" translatable="false">There was an issue communicating with players.</string>

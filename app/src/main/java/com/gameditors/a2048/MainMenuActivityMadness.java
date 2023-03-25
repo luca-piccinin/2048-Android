@@ -37,11 +37,12 @@ import com.google.android.gms.games.LeaderboardsClient;
 import com.google.android.gms.games.PlayersClient;
 import com.google.android.gms.tasks.Task;
 
+
 public class MainMenuActivityMadness extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener
 {
     public static boolean mIsMainMenu = true;
 
-    private static int mRows = 25;
+    private static int mRows = 4;
     public static int getRows() { return mRows; }
 
     private final String BACKGROUND_COLOR_KEY = "BackgroundColor";
@@ -146,8 +147,8 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
                 this.StartGame(100);
                 break;
             case R.id.btn_back:
-                Intent main = new Intent(this, MainMenuActivity.class);
-                startActivity(main);
+                CustomDialog dialog = new CustomDialog(this, getResources().getString(R.string.message_madness));
+                dialog.show();
                 break;
             case R.id.btn_show_achievements:
                 if(isSignedIn())
