@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2048</string>
+    <string name="header">2048</string>
+    <string name="high_score">HOCHSCORE</string>
+    <string name="score">PUNKTE</string>
+    <string name="you_win">GEWONNEN!</string>
+    <string name="game_over">SPIEL VORBEI!</string>
+    <string name="go_on">Tippe zum Fortfahren</string>
+    <string name="for_now">Vorerst...</string>
+    <string name="endless">Endlos-Modus</string>
+    <string name="next">Weiter</string>
+    <string name="madness" translatable="false">verrücktheit</string>
+    <string name="back" translatable="false">zurück</string>
+
+    <string name="message" translatable="false">Sind Sie SICHER, dass Sie fortfahren möchten?</string>
+    <string name="message_madness" translatable="false">Sind Sie sicher, dass Sie zurück möchten?</string>
+
+
+    <string name="achievements_exception" translatable="false">Es gab ein Problem bei der Kommunikation mit den Erfolgen.</string>
+    <string name="leaderboards_exception" translatable="false">Es gab ein Problem bei der Kommunikation mit den Bestenlisten.</string>
+    <string name="players_exception" translatable="false">Es gab ein Problem bei der Kommunikation mit den Spielern.</string>
+    <string name="signin_other_error" translatable="false">Es gab ein Problem bei der Anmeldung. Bitte versuchen Sie es später erneut.</string>
+
+    <!-- Bestätigungsdialog-->
+    <string name="reset">Zurücksetzen</string>
+    <string name="continue_game">Abbrechen</string>
+    <string name="reset_dialog_title">Spiel zurücksetzen</string>
+    <string name="reset_dialog_message">Sind Sie sicher, dass Sie das Spiel zurücksetzen möchten?</string>
+
+    <!-- Teilen Einführung -->
+    <string name="get_from_bazaar">Laden Sie 2048 auf Google Play herunter</string>
+    <string name="share_title">Teilen Sie 2048 mit</string>
+
+    <!-- Papierkorb -->
+    <string name="reward_amount_error">Jeder Satz hat nur zwei zusätzliche Chancen!</string>
+    <string name="tiles_are_not_enough_to_remove">Es gibt zu wenige Kacheln zum Entfernen!</string>
+    <string name="trash_dialog_title">Kacheln entfernen</string>
+    <string name="trash_dialog_message">Sind Sie sicher, dass Sie einige Kacheln ENTFERNEN möchten?</string>
+    <string name="yes_delete_tiles">Ja</string>
+    <string name="dont_delete_tiles">Nein</string>
+
+    <!-- Löschauswahl -->
+
+    <!-- Menüpunkte -->
+    <string name="sign_out">Abmelden</string>
+    <string name="try_again">Bitte versuchen Sie es später erneut!</string>
+
+    <!-- Farbe -->
+    <string name="color_picker">Farbauswahl</string>
+    <string name="red">Rot:</string>
+    <string name="green">Grün:</string>
+    <string name="blue">Blau:</string>
+
+    <string name="background_color_changed">Hintergrundfarbe wurde geändert</string>
+    <string name="background_color_has_been_reset_to_default">Hintergrundfarbe wurde auf Standard zurückgesetzt</string>
+    <string name="accept_color">Akzeptieren</string>
+    <string name="dont_accept_color">Abbrechen</string>
+    <string name="reset_to_default_color">Standard</string>
+
+    <!-- Kontakt per E-Mail -->
+    <string name="email_client_error">Kein E-Mail-Client installiert!</string>
+    <string name="email_subject">2048 Support</string>
+    <string name="email_support_address" translatable="false">luca.piccinin2002@gmail.com</string>
+    <string name="email_send_title">E-Mail senden...</string>
+
+    <string name="saved">Alle Informationen wurden gespeichert</string>
+    <string name="loaded">Erfolgreich geladen!</string>
+    <string name="loading_failed">Du hast kein gespeichertes Spiel!</string>
+    <string name="message_unable_saving_on_game_over">Wenn das Spiel vorbei ist, kannst du kein Backup mehr erstellen!</string>
+
+    <!-- Neue Funktionen -->
+    <string name="new_features_title">Was gibt es Neues?</string>
+    <string name="new_features_positive_btn">OK</string>
+    <string name="message_new_features">Snapshot Speichern/Laden wurde zum Spiel hinzugefügt</string>
+
+</resources>

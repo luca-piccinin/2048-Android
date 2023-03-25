@@ -85,7 +85,6 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_madness);
 
-        mIsMainMenu = true;
 
         Typeface ClearSans_Bold = Typeface.createFromAsset(getResources().getAssets(), "ClearSans-Bold.ttf");
 
@@ -266,7 +265,6 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
     protected void onResume()
     {
         super.onResume();
-        mIsMainMenu = true;
 
         // Since the state of the signed in user can change when the activity is not active
         // it is recommended to try and sign in silently from when the app resumes.
@@ -300,7 +298,6 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
     private void StartGame(int rows)
     {
         mRows = rows;
-        mIsMainMenu = false;
         startActivity(new Intent(MainMenuActivityMadness.this, MainActivity.class));
     }
 
