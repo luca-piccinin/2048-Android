@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2048</string>
+    <string name="header">2048</string>
+    <string name="high_score">PUNTEGGIO MASSIMO</string>
+    <string name="score">PUNTEGGIO</string>
+    <string name="you_win">HAI VINTO!</string>
+    <string name="game_over">FINE DEL GIOCO!</string>
+    <string name="go_on">Tocca per continuare</string>
+    <string name="for_now">Per adesso…</string>
+    <string name="endless">Modalità "Infinita"</string>
+    <!-- Confirmation dialog-->
+    <string name="reset">Resetta</string>
+    <string name="continue_game">Annulla</string>
+    <string name="reset_dialog_title">Resetta gioco</string>
+    <string name="reset_dialog_message">Sei sicuro di voler resettare il gioco?</string>
+
+    <!-- Share Intro -->
+    <string name="get_from_bazaar">Scarica 2048 su Google Play</string>
+    <string name="share_title">Condividi 2048 utilizzando</string>
+
+    <!-- Trash -->
+    <string name="reward_amount_error">Ogni set ha solo due possibilità extra!</string>
+    <string name="tiles_are_not_enough_to_remove">Ci sono troppo poche tessere per rimuoverle!</string>
+    <string name="trash_dialog_title">Rimuovi tessere</string>
+    <string name="trash_dialog_message">Sei sicuro di voler RIMUOVERE alcune tessere?</string>
+    <string name="yes_delete_tiles">Sì</string>
+    <string name="dont_delete_tiles">No</string>
+
+    <!-- Deleting Selection -->
+
+    <!-- Menu Items -->
+    <string name="sign_out">Esci</string>
+    <string name="try_again">Riprova tra qualche secondo!</string>
+
+    <!-- Color -->
+    <string name="color_picker">Selezionatore di colore</string>
+    <string name="red">Rosso:</string>
+    <string name="green">Verde:</string>
+    <string name="blue">Blu:</string>
+
+    <!-- Coloring -->
+    <string name="background_color_changed">Il colore di sfondo è stato modificato</string>
+    <string name="background_color_has_been_reset_to_default">Il colore di sfondo è stato ripristinato al valore predefinito</string>
+    <string name="accept_color">Accetta</string>
+    <string name="dont_accept_color">Annulla</string>
+    <string name="reset_to_default_color">Predefinito</string>
+
+    <!-- Contact with Email -->
+    <string name="email_client_error">Non è installato alcun client email!</string>
+    <string name="email_subject">Supporto 2048</string>
+    <string name="email_support_address" translatable="false">luca.piccinin2002@gmail.com</string>
+    <string name="email_send_title">Invia Email...</string>
+
+    <string name="saved">Tutte le informazioni salvate</string>
+    <string name="loaded">Caricato con successo!</string>
+    <string name="loading_failed">Non hai nessun gioco salvato!</string>
+    <string name="message_unable_saving_on_game_over">Quando il gioco è finito, non è possibile effettuare un backup!</string>
+
+    <!-- nuove funzionalità -->
+    <string name="new_features_title">Novità</string>
+    <string name="new_features_positive_btn">OK</string>
+    <string name="message_new_features">È stata aggiunta la funzionalità di salvataggio/caricamento snapshot al gioco</string>
+
+</resources>
