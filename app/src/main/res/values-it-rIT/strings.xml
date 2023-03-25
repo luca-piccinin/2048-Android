@@ -9,6 +9,15 @@
     <string name="go_on">Tocca per continuare</string>
     <string name="for_now">Per adesso…</string>
     <string name="endless">Modalità "Infinita"</string>
+    <string name="next">Continua</string>
+    <string name="madness" translatable="false">follia</string>
+    <string name="back" translatable="false">indietro</string>
+
+    <string name="achievements_exception" translatable="false">Si è verificato un problema durante la comunicazione con i traguardi.</string>
+    <string name="leaderboards_exception" translatable="false">Si è verificato un problema durante la comunicazione con le classifiche.</string>
+    <string name="players_exception" translatable="false">Si è verificato un problema durante la comunicazione con i giocatori.</string>
+    <string name="signin_other_error" translatable="false">Si è verificato un problema con l'accesso. Riprova più tardi.</string>
+
     <!-- Confirmation dialog-->
     <string name="reset">Resetta</string>
     <string name="continue_game">Annulla</string>

@@ -4,38 +4,46 @@
     <string name="header">2048</string>
     <string name="high_score">HIGH SCORE</string>
     <string name="score">SCORE</string>
-    <string name="you_win">You Win!</string>
-    <string name="game_over">Game Over!</string>
-    <string name="go_on">Tap to Continue</string>
-    <string name="for_now">For now…</string>
-    <string name="endless">"Endless" Mode</string>
+    <string name="you_win">YOU WIN!</string>
+    <string name="game_over">GAME OVER!</string>
+    <string name="go_on">Tap to continue</string>
+    <string name="for_now">For now...</string>
+    <string name="endless">Endless Mode</string>
+    <string name="next">Continue</string>
+    <string name="madness" translatable="false">madness</string>
+    <string name="back" translatable="false">back</string>
+
+    <string name="achievements_exception" translatable="false">There was an issue communicating with achievements.</string>
+    <string name="leaderboards_exception" translatable="false">There was an issue communicating with leaderboards.</string>
+    <string name="players_exception" translatable="false">There was an issue communicating with players.</string>
+    <string name="signin_other_error" translatable="false">There was an issue with sign in.  Please try again later.</string>
 
     <!-- Confirmation dialog-->
     <string name="reset">Reset</string>
     <string name="continue_game">Cancel</string>
     <string name="reset_dialog_title">Reset game</string>
-    <string name="reset_dialog_message">Are you sure you wish to reset the game?</string>
+    <string name="reset_dialog_message">Are you sure you want to reset the game?</string>
 
     <!-- Share Intro -->
-    <string name="get_from_bazaar">Get 2048 on Google Play</string>
+    <string name="get_from_bazaar">Download 2048 on Google Play</string>
     <string name="share_title">Share 2048 using</string>
 
     <!-- Trash -->
-    <string name="reward_amount_error">Each set only has two extra chance!</string>
-    <string name="tiles_are_not_enough_to_remove">Tiles are very few to remove!</string>
+    <string name="reward_amount_error">Each set only has two extra chances!</string>
+    <string name="tiles_are_not_enough_to_remove">There are too few tiles to remove!</string>
     <string name="trash_dialog_title">Remove tiles</string>
-    <string name="trash_dialog_message">Are you sure you wish to REMOVE several tiles?</string>
+    <string name="trash_dialog_message">Are you sure you want to REMOVE some tiles?</string>
     <string name="yes_delete_tiles">Yes</string>
     <string name="dont_delete_tiles">No</string>
 
     <!-- Deleting Selection -->
 
     <!-- Menu Items -->
-    <string name="sign_out">Sign out</string>
-    <string name="try_again">Try again a few seconds later!</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="try_again">Please try again later!</string>
 
     <!-- Color -->
-    <string name="color_picker">Color picker</string>
+    <string name="color_picker">Color Picker</string>
     <string name="red">Red:</string>
     <string name="green">Green:</string>
     <string name="blue">Blue:</string>
@@ -48,18 +56,19 @@
     <string name="reset_to_default_color">Default</string>
 
     <!-- Contact with Email -->
-    <string name="email_client_error">There is no email client installed!</string>
-    <string name="email_subject">2048 support</string>
+    <string name="email_client_error">No email client is installed!</string>
+    <string name="email_subject">2048 Support</string>
     <string name="email_support_address" translatable="false">luca.piccinin2002@gmail.com</string>
     <string name="email_send_title">Send Email...</string>
 
     <string name="saved">All information saved</string>
-    <string name="loaded">Successfuly loaded!</string>
+    <string name="loaded">Successfully loaded!</string>
     <string name="loading_failed">You haven\'t any saved game!</string>
-    <string name="message_unable_saving_on_game_over">when the game is over, you can\'t make backup!</string>
+    <string name="message_unable_saving_on_game_over">When the game is over, you can\'t make a backup!</string>
 
-    <!-- new features -->
+    <!-- New features -->
     <string name="new_features_title">What\'s new?</string>
     <string name="new_features_positive_btn">OK</string>
     <string name="message_new_features">Snapshot saving/loading has been added to the game</string>
+
 </resources>
