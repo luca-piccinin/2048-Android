@@ -1,7 +1,6 @@
 package com.gameditors.a2048;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.content.ContextCompat;
@@ -36,7 +36,6 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.games.LeaderboardsClient;
 import com.google.android.gms.games.PlayersClient;
 import com.google.android.gms.tasks.Task;
-
 
 public class MainMenuActivityMadness extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener
 {
@@ -121,6 +120,7 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         switch (item.getItemId())
         {
             case R.id.settings_color_picker:
+                mRows = 4;  // because of its GameView!
                 startActivity(new Intent(MainMenuActivityMadness.this, ColorPickerActivity.class));
                 break;
             case R.id.settings_sign_out:
