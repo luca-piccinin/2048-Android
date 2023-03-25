@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -22,22 +22,25 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="16dp"
-            android:gravity="right">
+            android:gravity="right"
+            tools:ignore="RtlHardcoded">
 
             <Button
                 android:id="@+id/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Indietro" />
+                android:text="@string/back"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/continue_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Continua" />
+                android:text="@string/next"
+                style="?android:attr/buttonBarButtonStyle" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
