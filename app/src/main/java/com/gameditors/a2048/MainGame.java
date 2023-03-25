@@ -2,7 +2,6 @@ package com.gameditors.a2048;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
@@ -477,15 +476,10 @@ public class MainGame
                 if(mView.game.grid.getAvailableCells().size() < cellCount)
                 {
                     new AlertDialog.Builder(mView.getContext())
-                            .setPositiveButton(R.string.yes_delete_tiles, new DialogInterface.OnClickListener()
-                            {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which)
-                                {
-                                    MainActivity.mRewardDeletes--;  // decrease rewards
-                                    customSaveLoadTemp();
-                                    mView.invalidate();
-                                }
+                            .setPositiveButton(R.string.yes_delete_tiles, (dialog, which) -> {
+                                MainActivity.mRewardDeletes--;  // decrease rewards
+                                customSaveLoadTemp();
+                                mView.invalidate();
                             })
                             .setNegativeButton(R.string.dont_delete_tiles, null)
                             .setTitle(R.string.trash_dialog_title)

@@ -1,38 +1,35 @@
 package com.gameditors.a2048;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.games.AchievementsClient;
-import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.EventsClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.LeaderboardsClient;
-import com.google.android.gms.games.Player;
 import com.google.android.gms.games.PlayersClient;
 import com.google.android.gms.games.event.Event;
 import com.google.android.gms.games.event.EventBuffer;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.Arrays;
@@ -90,6 +87,25 @@ public class MainActivity extends AppCompatActivity
     private static boolean mAchievement4096 = false;
     private static boolean mAchievement8192 = false;
 
+    private final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
+        @Override
+        public void onAvailable(Network network) {
+            // Network is available
+            initializeMobileAds();
+        }
+
+        @Override
+        public void onLost(Network network) {
+            // Network is lost
+        }
+    };
+
+    private void initializeMobileAds() {
+        MobileAds.initialize(this, initializationStatus -> {
+            // Mobile Ads initialization complete
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -111,33 +127,11 @@ public class MainActivity extends AppCompatActivity
 
         frameLayout.addView(view);
 
-        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-
-        /*if(activeNetwork != null && activeNetwork.isConnectedOrConnecting())
-        {
-            ((AdadBannerAd) findViewById(R.id.banner_ad_view_game)).setAdListener(new AdadAdListener() {
-                @Override
-                public void onLoaded() {
-                }
-
-                @Override
-                public void onShowed() {
-                }
-
-                @Override
-                public void onActionOccurred(int code) {
-                }
-
-                @Override
-                public void onError(int code, String message) {
-                }
-
-                @Override
-                public void onClosed() {
-                }
-            });
-        }*/
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkRequest networkRequest = new NetworkRequest.Builder()
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                .build();
+        connectivityManager.registerNetworkCallback(networkRequest, networkCallback);
         // Create the client used to sign in to Google services.
         mGoogleSignInClient = GoogleSignIn.getClient(this,
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).build());
@@ -150,14 +144,7 @@ public class MainActivity extends AppCompatActivity
         {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.new_features_title)
-                    .setPositiveButton(R.string.new_features_positive_btn, new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which)
-                        {
-                            turnOffNewFeaturesDialogShowed();
-                        }
-                    })
+                    .setPositiveButton(R.string.new_features_positive_btn, (dialog, which) -> turnOffNewFeaturesDialogShowed())
                     .setMessage(R.string.message_new_features)
                     .setCancelable(false)
                     .show();
@@ -336,48 +323,34 @@ public class MainActivity extends AppCompatActivity
         view.game.lastGameState = settings.getInt(UNDO_GAME_STATE + rows, view.game.lastGameState);
     }
 
+    @SuppressLint("VisibleForTests")
     public void loadAndPrintEvents()
     {
-        mEventsClient.load(true).addOnSuccessListener(new OnSuccessListener<AnnotatedData<EventBuffer>>() {
-            @Override
-            public void onSuccess(AnnotatedData<EventBuffer> eventBufferAnnotatedData) {
-                EventBuffer eventBuffer = eventBufferAnnotatedData.get();
+        mEventsClient.load(true).addOnSuccessListener(eventBufferAnnotatedData -> {
+            EventBuffer eventBuffer = eventBufferAnnotatedData.get();
 
-                int count = 0;
-                if (eventBuffer != null)
-                    count = eventBuffer.getCount();
+            int count = 0;
+            if (eventBuffer != null)
+                count = eventBuffer.getCount();
 
-                for (int i = 0; i < count; i++) {
-                    Event event = eventBuffer.get(i);
-                    Log.i(TAG, "event: "
-                            + event.getName()
-                            + " -> "
-                            + event.getValue());
-                }
+            for (int i = 0; i < count; i++) {
+                Event event = eventBuffer.get(i);
+                Log.i(TAG, "event: "
+                        + event.getName()
+                        + " -> "
+                        + event.getValue());
             }
         })
-                .addOnFailureListener(new OnFailureListener()
-                {
-                    @Override
-                    public void onFailure(@NonNull Exception e)
-                    {
-                        handleException(e, getString(R.string.achievements_exception));
-                    }
-                });
+                .addOnFailureListener(e -> handleException(e, getString(R.string.achievements_exception)));
     }
 
     public void signInSilently()
     {
-        mGoogleSignInClient.silentSignIn().addOnCompleteListener(this, new OnCompleteListener<GoogleSignInAccount>()
-        {
-            @Override
-            public void onComplete(@NonNull Task<GoogleSignInAccount> task)
-            {
-                if (task.isSuccessful())
-                    onConnected(task.getResult());
-                else
-                    onDisconnected();
-            }
+        mGoogleSignInClient.silentSignIn().addOnCompleteListener(this, task -> {
+            if (task.isSuccessful())
+                onConnected(task.getResult());
+            else
+                onDisconnected();
         });
     }
 
@@ -391,7 +364,7 @@ public class MainActivity extends AppCompatActivity
             status = apiException.getStatusCode();
         }
 
-        String message = getString(R.string.status_exception_error, details, status, e);
+        getString(R.string.status_exception_error, details, status, e);
     }
 
     public void pushAccomplishments()
@@ -492,6 +465,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @SuppressLint("VisibleForTests")
     public void onConnected(GoogleSignInAccount googleSignInAccount)
     {
         mAchievementsClient = Games.getAchievementsClient(this, googleSignInAccount);
@@ -500,19 +474,13 @@ public class MainActivity extends AppCompatActivity
         mPlayersClient = Games.getPlayersClient(this, googleSignInAccount);
 
         // Set the greeting appropriately on main menu
-        mPlayersClient.getCurrentPlayer().addOnCompleteListener(new OnCompleteListener<Player>()
-        {
-            @Override
-            public void onComplete(@NonNull Task<Player> task)
+        mPlayersClient.getCurrentPlayer().addOnCompleteListener(task -> {
+            if (task.isSuccessful())
+                task.getResult().getDisplayName();
+            else
             {
-                String displayName;
-                if (task.isSuccessful())
-                    displayName = task.getResult().getDisplayName();
-                else
-                {
-                    Exception e = task.getException();
-                    handleException(e, getString(R.string.players_exception));
-                }
+                Exception e = task.getException();
+                handleException(e, getString(R.string.players_exception));
             }
         });
 
@@ -566,22 +534,6 @@ public class MainActivity extends AppCompatActivity
                 new AlertDialog.Builder(this).setMessage(message)
                         .setNeutralButton(android.R.string.ok, null).show();
             }
-        }
-    }
-
-    public static void setHighScore(long highScore, int boardRows)
-    {
-        switch (boardRows)
-        {
-            case 4:
-                mHighScore4x4 = highScore;
-                break;
-            case 5:
-                mHighScore5x5 = highScore;
-                break;
-            case 6:
-                mHighScore6x6 = highScore;
-                break;
         }
     }
 

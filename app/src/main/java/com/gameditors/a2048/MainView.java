@@ -1,15 +1,19 @@
 package com.gameditors.a2048;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
+
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
@@ -35,7 +39,7 @@ public class MainView extends View
     public int sYIcons;
     public int sXNewGame;
     public int sXUndo;
-    public int sXRemoveTiles;       // trsh button
+    public int sXRemoveTiles;       // trash button
     public int sXSave;   // save the current board
     public int sXLoad;   // load previous saved board
     public int iconSize;
@@ -161,7 +165,8 @@ public class MainView extends View
         //Refresh the screen if there is still an animation running
         if (game.aGrid.isAnimationActive())
         {
-            invalidate(startingX, startingY, endingX, endingY);
+            @SuppressLint("DrawAllocation") Rect rect = new Rect(startingX, startingY, endingX, endingY);
+            invalidate(rect);
             tick();
             //Refresh one last time on game end.
         }
@@ -182,6 +187,7 @@ public class MainView extends View
         createOverlays();
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @SuppressWarnings("deprecation")
     private Drawable getDrawable(int resId)
     {
@@ -194,14 +200,13 @@ public class MainView extends View
         draw.draw(canvas);
     }
 
-    private void drawCellText(Canvas canvas, int value)
-    {
+    private void drawCellText(Canvas canvas, int value) {
         int textShiftY = centerText();
-        if (value >= 8)
-            paint.setColor(getResources().getColor(R.color.text_white));
-        else
-            paint.setColor(getResources().getColor(R.color.text_black));
-
+        if (value >= 8) {
+            paint.setColor(ContextCompat.getColor(getContext(), R.color.text_white));
+        } else {
+            paint.setColor(ContextCompat.getColor(getContext(), R.color.text_black));
+        }
         canvas.drawText("" + value, cellSize / 2, cellSize / 2 - textShiftY, paint);
     }
 
@@ -495,7 +500,7 @@ public class MainView extends View
     private void drawGameOverButtons(Canvas canvas)
     {
         drawNewGameButton(canvas, true);
-        drawTrashButton(canvas, !game.gameWon() && MainActivity.mRewardDeletes > 0 ? true : false);
+        drawTrashButton(canvas, !game.gameWon() && MainActivity.mRewardDeletes > 0);
         drawUndoButton(canvas, true);
         drawLoadButton(canvas, true);
         drawSaveButton(canvas, false);

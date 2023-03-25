@@ -1,5 +1,6 @@
 package com.gameditors.a2048;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -7,7 +8,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,13 +20,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -33,20 +34,13 @@ import com.google.android.gms.games.AchievementsClient;
 import com.google.android.gms.games.EventsClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.LeaderboardsClient;
-import com.google.android.gms.games.Player;
 import com.google.android.gms.games.PlayersClient;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 
 public class MainMenuActivityMadness extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener
 {
     public static boolean mIsMainMenu = true;
-
-    private static int mRows = 4;
-    public static int getRows() { return mRows; }
 
     private final String BACKGROUND_COLOR_KEY = "BackgroundColor";
     public static int mBackgroundColor = 0;
@@ -63,6 +57,25 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
     // request codes we use when invoking an external activity
     public static final int RC_UNUSED = 5001;
     public static final int RC_SIGN_IN = 9001;
+
+    private final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
+        @Override
+        public void onAvailable(Network network) {
+            // Network is available
+            initializeMobileAds();
+        }
+
+        @Override
+        public void onLost(Network network) {
+            // Network is lost
+        }
+    };
+
+    private void initializeMobileAds() {
+        MobileAds.initialize(this, initializationStatus -> {
+            // Mobile Ads initialization complete
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -84,33 +97,27 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         bt100x100.setTypeface(ClearSans_Bold);
         btback.setTypeface(ClearSans_Bold);
 
-        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-
-        if(activeNetwork != null && activeNetwork.isConnectedOrConnecting())
-        {
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-        }
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkRequest networkRequest = new NetworkRequest.Builder()
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                .build();
+        connectivityManager.registerNetworkCallback(networkRequest, networkCallback);
 
         // Create the client used to sign in to Google services.
         mGoogleSignInClient = GoogleSignIn.getClient(this,
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).build());
 
-        if(!isSignedIn())
+        if(isSignedIn())
             startSignInIntent();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onMenuItemClick(MenuItem item)
     {
         switch (item.getItemId())
         {
             case R.id.settings_color_picker:
-                mRows = 4;  // because of its GameView!
                 startActivity(new Intent(MainMenuActivityMadness.this, ColorPickerActivity.class));
                 break;
             case R.id.settings_sign_out:
@@ -121,49 +128,26 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
     }
 
     // Buttons:
+    @SuppressLint({"NonConstantResourceId", "IntentReset"})
     public void onButtonsClick(View view)
     {
         switch (view.getId())
         {
-            /*
-            case R.id.btn_ballz:
-                try
-                {
-                    Intent ballz = new Intent(Intent.ACTION_MAIN);
-                    ballz.setComponent(new ComponentName("com.gameditors.ballz","com.unity3d.player.UnityPlayerActivity"));
-                    startActivity(ballz);
-                }
-                catch (ActivityNotFoundException anfe)
-                {
-                    try
-                    {
-                        Intent ballzOnCafeBazaar = new Intent(Intent.ACTION_VIEW);
-                        ballzOnCafeBazaar.setData(Uri.parse("bazaar://details?id=com.gameditors.ballz"));
-                        ballzOnCafeBazaar.setPackage("com.farsitel.bazaar");
-                        startActivity(ballzOnCafeBazaar);
-                    }
-                    catch (ActivityNotFoundException anfe2) // for bazaar activity not found exception
-                    {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://cafebazaar.ir/app/com.gameditors.ballz")));
-                    }
-                }
-                break;
-                */
             case R.id.btn_start_25x25:
-                this.StartGame(25);
+                this.StartGame();
                 break;
             case R.id.btn_start_50x50:
-                this.StartGame(50);
+                this.StartGame();
                 break;
             case R.id.btn_start_100x100:
-                this.StartGame(100);
+                this.StartGame();
                 break;
             case R.id.btn_back:
                 Intent main = new Intent(this, MainMenuActivity.class);
                 startActivity(main);
                 break;
             case R.id.btn_show_achievements:
-                if(!isSignedIn())
+                if(isSignedIn())
                     startSignInIntent();
                 else
                 {
@@ -178,7 +162,7 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
                 }
                 break;
             case R.id.btn_show_leaderboards:
-                if(!isSignedIn())
+                if(isSignedIn())
                     startSignInIntent();
                 else
                 {
@@ -203,8 +187,7 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
                 try
                 {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("bazaar://collection?slug=by_author&aid=scientist_studio"));
-                    intent.setPackage("com.farsitel.bazaar");
+                    intent.setData(Uri.parse("https://play.google.com/store/apps/dev?id=8880176094509043816"));
                     startActivity(intent);
                 }
                 catch (Exception e)
@@ -214,8 +197,7 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
                 break;
             case R.id.btn_rate:
                 Intent bazaarIntent = new Intent(Intent.ACTION_EDIT);
-                bazaarIntent.setData(Uri.parse("bazaar://details?id=com.gameditors.a2048"));
-                bazaarIntent.setPackage("com.farsitel.bazaar");
+                bazaarIntent.setData(Uri.parse("https://play.google.com/store/apps/dev?id=8880176094509043816"));
 
                 try
                 {
@@ -309,45 +291,34 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         if(settings.getInt(BACKGROUND_COLOR_KEY, mBackgroundColor) < 0)
             mBackgroundColor = settings.getInt(BACKGROUND_COLOR_KEY, mBackgroundColor);
         else
-            mBackgroundColor = getResources().getColor(R.color.colorBackground);
+            mBackgroundColor = ContextCompat.getColor(this, R.color.colorBackground);
     }
 
-    private void StartGame(int rows)
+    private void StartGame()
     {
-        mRows = rows;
         mIsMainMenu = false;
         startActivity(new Intent(MainMenuActivityMadness.this, MainActivity.class));
     }
 
     public void signInSilently()
     {
-        mGoogleSignInClient.silentSignIn().addOnCompleteListener(this, new OnCompleteListener<GoogleSignInAccount>()
-        {
-            @Override
-            public void onComplete(@NonNull Task<GoogleSignInAccount> task)
-            {
-                if (task.isSuccessful())
-                    onConnected(task.getResult());
-                else
-                    onDisconnected();
-            }
+        mGoogleSignInClient.silentSignIn().addOnCompleteListener(this, task -> {
+            if (task.isSuccessful())
+                onConnected(task.getResult());
+            else
+                onDisconnected();
         });
     }
 
     private void signOut()
     {
-        if (!isSignedIn())
+        if (isSignedIn())
             return;
 
-        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>()
-        {
-            @Override
-            public void onComplete(@NonNull Task<Void> task)
-            {
-                boolean successful = task.isSuccessful();
+        mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> {
+            task.isSuccessful();
 
-                onDisconnected();
-            }
+            onDisconnected();
         });
     }
 
@@ -361,9 +332,10 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
             status = apiException.getStatusCode();
         }
 
-        String message = getString(R.string.status_exception_error, details, status, e);
+        getString(R.string.status_exception_error, details, status, e);
     }
 
+    @SuppressLint("VisibleForTests")
     public void onConnected(GoogleSignInAccount googleSignInAccount)
     {
         mAchievementsClient = Games.getAchievementsClient(this, googleSignInAccount);
@@ -372,19 +344,13 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         mPlayersClient = Games.getPlayersClient(this, googleSignInAccount);
 
         // Set the greeting appropriately on main menu
-        mPlayersClient.getCurrentPlayer().addOnCompleteListener(new OnCompleteListener<Player>()
-        {
-            @Override
-            public void onComplete(@NonNull Task<Player> task)
+        mPlayersClient.getCurrentPlayer().addOnCompleteListener(task -> {
+            if (task.isSuccessful())
+                task.getResult().getDisplayName();
+            else
             {
-                String displayName;
-                if (task.isSuccessful())
-                    displayName = task.getResult().getDisplayName();
-                else
-                {
-                    Exception e = task.getException();
-                    handleException(e, getString(R.string.players_exception));
-                }
+                Exception e = task.getException();
+                handleException(e, getString(R.string.players_exception));
             }
         });
     }
@@ -403,45 +369,17 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
 
     private boolean isSignedIn()
     {
-        return GoogleSignIn.getLastSignedInAccount(this) != null;
+        return GoogleSignIn.getLastSignedInAccount(this) == null;
     }
 
     public void onShowAchievementsRequested()
     {
-        mAchievementsClient.getAchievementsIntent().addOnSuccessListener(new OnSuccessListener<Intent>()
-        {
-            @Override
-            public void onSuccess(Intent intent)
-            {
-                startActivityForResult(intent, RC_UNUSED);
-            }
-        }).addOnFailureListener(new OnFailureListener()
-        {
-            @Override
-            public void onFailure(@NonNull Exception e)
-            {
-                handleException(e, getString(R.string.achievements_exception));
-            }
-        });
+        mAchievementsClient.getAchievementsIntent().addOnSuccessListener(intent -> startActivityForResult(intent, RC_UNUSED)).addOnFailureListener(e -> handleException(e, getString(R.string.achievements_exception)));
     }
 
     public void onShowLeaderboardsRequested()
     {
-        mLeaderboardsClient.getAllLeaderboardsIntent().addOnSuccessListener(new OnSuccessListener<Intent>()
-        {
-            @Override
-            public void onSuccess(Intent intent)
-            {
-                startActivityForResult(intent, RC_UNUSED);
-            }
-        }).addOnFailureListener(new OnFailureListener()
-        {
-            @Override
-            public void onFailure(@NonNull Exception e)
-            {
-                handleException(e, getString(R.string.leaderboards_exception));
-            }
-        });
+        mLeaderboardsClient.getAllLeaderboardsIntent().addOnSuccessListener(intent -> startActivityForResult(intent, RC_UNUSED)).addOnFailureListener(e -> handleException(e, getString(R.string.leaderboards_exception)));
     }
 
     @Override

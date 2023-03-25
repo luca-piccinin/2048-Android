@@ -1,11 +1,9 @@
 package com.gameditors.a2048;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 class InputListener implements View.OnTouchListener
 {
@@ -32,6 +30,7 @@ class InputListener implements View.OnTouchListener
         this.mView = view;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public boolean onTouch(View view, MotionEvent event)
     {
         switch (event.getAction())
@@ -82,14 +81,15 @@ class InputListener implements View.OnTouchListener
                     {
                         boolean moved = false;
                         //Vertical
-                        if (((dy >= SWIPE_THRESHOLD_VELOCITY && Math.abs(dy) >= Math.abs(dx)) || y - startingY >= MOVE_THRESHOLD) && previousDirection % 2 != 0)
+                        boolean b = Math.abs(dy) >= Math.abs(dx);
+                        if (((dy >= SWIPE_THRESHOLD_VELOCITY && b) || y - startingY >= MOVE_THRESHOLD) && previousDirection % 2 != 0)
                         {
                             moved = true;
                             previousDirection = previousDirection * 2;
                             veryLastDirection = 2;
                             mView.game.move(2);
                         }
-                        else if (((dy <= -SWIPE_THRESHOLD_VELOCITY && Math.abs(dy) >= Math.abs(dx)) || y - startingY <= -MOVE_THRESHOLD) && previousDirection % 3 != 0)
+                        else if (((dy <= -SWIPE_THRESHOLD_VELOCITY && b) || y - startingY <= -MOVE_THRESHOLD) && previousDirection % 3 != 0)
                         {
                             moved = true;
                             previousDirection = previousDirection * 3;
@@ -97,14 +97,15 @@ class InputListener implements View.OnTouchListener
                             mView.game.move(0);
                         }
                         //Horizontal
-                        if (((dx >= SWIPE_THRESHOLD_VELOCITY && Math.abs(dx) >= Math.abs(dy)) || x - startingX >= MOVE_THRESHOLD) && previousDirection % 5 != 0)
+                        boolean b1 = Math.abs(dx) >= Math.abs(dy);
+                        if (((dx >= SWIPE_THRESHOLD_VELOCITY && b1) || x - startingX >= MOVE_THRESHOLD) && previousDirection % 5 != 0)
                         {
                             moved = true;
                             previousDirection = previousDirection * 5;
                             veryLastDirection = 5;
                             mView.game.move(1);
                         }
-                        else if (((dx <= -SWIPE_THRESHOLD_VELOCITY && Math.abs(dx) >= Math.abs(dy)) || x - startingX <= -MOVE_THRESHOLD) && previousDirection % 7 != 0)
+                        else if (((dx <= -SWIPE_THRESHOLD_VELOCITY && b1) || x - startingX <= -MOVE_THRESHOLD) && previousDirection % 7 != 0)
                         {
                             moved = true;
                             previousDirection = previousDirection * 7;
@@ -134,18 +135,13 @@ class InputListener implements View.OnTouchListener
                     if (iconPressed(mView.sXNewGame, mView.sYIcons))
                     {
                         new AlertDialog.Builder(mView.getContext())
-                                .setPositiveButton(R.string.reset, new DialogInterface.OnClickListener()
-                                {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which)
-                                    {
-                                        // reset rewards again:
-                                        MainActivity.mRewardDeletes = 2;
-                                        MainActivity.mRewardDeletingSelectionAmounts = 3;
+                                .setPositiveButton(R.string.reset, (dialog, which) -> {
+                                    // reset rewards again:
+                                    MainActivity.mRewardDeletes = 2;
+                                    MainActivity.mRewardDeletingSelectionAmounts = 3;
 
-                                        mView.game.newGame();
-                                        mView.game.canUndo = false;
-                                    }
+                                    mView.game.newGame();
+                                    mView.game.canUndo = false;
                                 })
                                 .setNegativeButton(R.string.continue_game, null)
                                 .setTitle(R.string.reset_dialog_title)

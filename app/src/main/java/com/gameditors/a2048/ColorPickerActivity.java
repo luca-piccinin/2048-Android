@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ColorPickerActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener
 {
-    // UIs
-    private FrameLayout mGameViewFrameLayout;
     private SeekBar mSeekBarRed;
     private SeekBar mSeekBarGreen;
     private SeekBar mSeekBarBlue;
@@ -26,7 +24,8 @@ public class ColorPickerActivity extends AppCompatActivity implements SeekBar.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_picker);
 
-        mGameViewFrameLayout = findViewById(R.id.game_view_frame_layout);
+        // UIs
+        FrameLayout mGameViewFrameLayout = findViewById(R.id.game_view_frame_layout);
         mSeekBarRed = findViewById(R.id.seekbar_red);
         mSeekBarGreen = findViewById(R.id.seekbar_green);
         mSeekBarBlue = findViewById(R.id.seekbar_blue);
