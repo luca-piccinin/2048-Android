@@ -41,7 +41,7 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
 {
     public static boolean mIsMainMenu = true;
 
-    private static int mRows = 4;
+    private static int mRows = 25;
     public static int getRows() { return mRows; }
 
     private final String BACKGROUND_COLOR_KEY = "BackgroundColor";
