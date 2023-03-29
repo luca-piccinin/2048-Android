@@ -129,7 +129,7 @@ public class MainMenuActivityMadness extends AppCompatActivity implements PopupM
         return false;
     }
 
-    @SuppressLint("NonConstantResourceId")
+    @SuppressLint({"NonConstantResourceId", "IntentReset"})
     public void onButtonsClick(View view)
     {
         switch (view.getId())
