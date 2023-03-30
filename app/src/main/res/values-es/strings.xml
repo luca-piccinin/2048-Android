@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2048</string>
+    <string name="header">2048</string>
+    <string name="high_score">PUNTUACIÓN MÁXIMA</string>
+    <string name="score">PUNTUACIÓN</string>
+    <string name="you_win">¡Has ganado!</string>
+    <string name="game_over">¡Fin del juego!</string>
+    <string name="go_on">Toca para continuar</string>
+    <string name="for_now">Por ahora...</string>
+    <string name="endless">Modo "Infinito"</string>
+    <string name="next">Continuar</string>
+    <string name="madness" translatable="false">locura</string>
+    <string name="back" translatable="false">atrás</string>
+
+    <string name="message" translatable="false">¿Estás SEGURO de que quieres continuar?</string>
+    <string name="message_madness" translatable="false">¿Estás seguro de que quieres volver atrás?</string>
+
+    <string name="achievements_exception" translatable="false">Ha habido un problema al comunicarse con los logros.</string>
+    <string name="leaderboards_exception" translatable="false">Ha habido un problema al comunicarse con las clasificaciones.</string>
+    <string name="players_exception" translatable="false">Ha habido un problema al comunicarse con los jugadores.</string>
+    <string name="signin_other_error" translatable="false">Ha habido un problema con el inicio de sesión. Por favor, inténtalo de nuevo más tarde.</string>
+
+    <!-- Confirmation dialog-->
+    <string name="reset">Reiniciar</string>
+    <string name="continue_game">Cancelar</string>
+    <string name="reset_dialog_title">Reiniciar el juego</string>
+    <string name="reset_dialog_message">¿Estás seguro de que deseas reiniciar el juego?</string>
+
+    <!-- Share Intro -->
+    <string name="get_from_bazaar">Obtener 2048 en Google Play</string>
+    <string name="share_title">Compartir 2048 usando</string>
+
+    <!-- Trash -->
+    <string name="reward_amount_error">¡Cada conjunto solo tiene dos oportunidades extra!</string>
+    <string name="tiles_are_not_enough_to_remove">¡Hay muy pocas casillas para eliminar!</string>
+    <string name="trash_dialog_title">Eliminar casillas</string>
+    <string name="trash_dialog_message">¿Estás seguro de que deseas ELIMINAR varias casillas?</string>
+    <string name="yes_delete_tiles">Sí</string>
+    <string name="dont_delete_tiles">No</string>
+
+    <!-- Deleting Selection -->
+
+    <!-- Menu Items -->
+    <string name="sign_out">Cerrar sesión</string>
+    <string name="try_again">Inténtalo de nuevo en unos segundos.</string>
+
+    <!-- Color -->
+    <string name="color_picker">Selector de color</string>
+    <string name="red">Rojo:</string>
+    <string name="green">Verde:</string>
+    <string name="blue">Azul:</string>
+
+    <!-- Cambio de color -->
+    <string name="background_color_changed">El color de fondo ha sido cambiado</string>
+    <string name="background_color_has_been_reset_to_default">El color de fondo ha sido restablecido a su valor predeterminado</string>
+    <string name="accept_color">Aceptar</string>
+    <string name="dont_accept_color">Cancelar</string>
+    <string name="reset_to_default_color">Predeterminado</string>
+
+    <!-- Contacto con correo electrónico -->
+    <string name="email_client_error">¡No se ha instalado ningún cliente de correo electrónico!</string>
+    <string name="email_subject">Soporte 2048</string>
+    <string name="email_support_address" translatable="false">luca.piccinin2002@gmail.com</string>
+    <string name="email_send_title">Enviar correo electrónico...</string>
+
+    <string name="saved">Toda la información ha sido guardada</string>
+    <string name="loaded">Cargado con éxito</string>
+    <string name="loading_failed">¡No tienes ningún juego guardado!</string>
+    <string name="message_unable_saving_on_game_over">Cuando el juego ha terminado, no se puede hacer una copia de seguridad</string>
+
+    <!-- Nuevas características -->
+    <string name="new_features_title">¿Qué hay de nuevo?</string>
+    <string name="new_features_positive_btn">Aceptar</string>
+    <string name="message_new_features">Se ha agregado la funcionalidad de guardar y cargar instantáneas al juego</string>
+
+</resources>
