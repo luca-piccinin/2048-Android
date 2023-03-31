@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gameditors.a2048.ColorPickerActivity">
+    tools:context="com.gameditors.TheOrginal2048.ColorPickerActivity">
 
     <FrameLayout
         android:id="@+id/game_view_frame_layout"

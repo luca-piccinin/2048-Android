@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdk 33
     defaultConfig {
-        applicationId "com.gameditors.a2048"
+        applicationId "com.gameditors.TheOrginal2048"
         minSdk 28
         targetSdkVersion 33
         versionCode 33
@@ -18,7 +18,7 @@ android {
     lint {
         abortOnError false
     }
-    namespace 'com.gameditors.a2048'
+    namespace 'com.gameditors.TheOrginal2048'
     // This is important, it will run lint checks but won't abort build
 }
 
@@ -26,7 +26,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
     implementation 'com.google.android.gms:play-services-games:23.1.0'
-    implementation "com.google.android.gms:play-services-games-v2:17.0.0"
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-ads:22.0.0'
