@@ -17,6 +17,8 @@ import android.widget.FrameLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -93,30 +95,25 @@ public class MainActivity extends AppCompatActivity
     private static boolean mAchievement4096 = false;
     private static boolean mAchievement8192 = false;
 
-    private final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
-        @Override
-        public void onAvailable(Network network) {
-            // Network is available
-            initializeMobileAds();
-        }
-
-        @Override
-        public void onLost(Network network) {
-            // Network is lost
-        }
-    };
-
-    private void initializeMobileAds() {
-        MobileAds.initialize(this, initializationStatus -> {
-            // Mobile Ads initialization complete
-        });
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        Context context = getApplicationContext();
+
+        final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
+            @Override
+            public void onAvailable(Network network) {
+                // Network is available
+                MobileAds.initialize(context, initializationStatus -> {});
+            }
+        };
+
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         FrameLayout frameLayout = findViewById(R.id.game_frame_layout);
         view = new MainView(this, this);
