@@ -5,7 +5,7 @@ Save this file as res/values/games-ids.xml in your project.
 -->
 <resources>
   <!-- app_id -->
-  <string name="app_id" translatable="false">106257177902</string>
+  <string name="app_id" translatable="false">421239185179</string>
   <!-- package_name -->
     <!-- achievement 32 -->
   <string name="achievement_32" translatable="false">CgkIrrqv64sDEAIQBA</string>
